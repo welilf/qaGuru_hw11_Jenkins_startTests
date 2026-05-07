@@ -11,6 +11,7 @@ public class FirstFormTest {
     @BeforeAll
     static void setUpConfig() {
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @Test
