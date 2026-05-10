@@ -17,8 +17,18 @@ public class FirstFormTest {
 
     @BeforeAll
     static void setUpConfig() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+        Configuration.browserSize = System.getProperty("browserScreenSize", "1920x1080");
+        Configuration.baseUrl = System.getProperty("baseUrl");
+
+        String selenoidUrl = System.getProperty("selenoidURL");
+        String selenoidLogin = System.getProperty("selenoidLogin");
+        String selenoidPass = System.getProperty("selenoidPass");
+
+        Configuration.remote = "https://" + selenoidLogin + ":" + selenoidPass + "@" + selenoidUrl;
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
