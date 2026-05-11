@@ -29,6 +29,7 @@ public class FirstFormTest {
 
         Configuration.remote = "https://" + selenoidLogin + ":" + selenoidPass + "@" + selenoidUrl;
 
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
